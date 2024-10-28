@@ -5,11 +5,12 @@ function ContactComplain() {
   return (
     <>
       <Box
-        w={"30 vw"}
+        w={"30vw"}
         h={"85vh"}
         display={"flex"}
         flexDir={"column"}
         overflowY={"auto"}
+        // position={"fixed"}
         sx={{
           "&::-webkit-scrollbar": {
             display: "none",
@@ -18,7 +19,7 @@ function ContactComplain() {
           "scrollbar-width": "none", // Firefox
         }}
       >
-        <VStack spacing={3}>
+        <VStack spacing={1}>
           <ComplainCard />
         </VStack>
       </Box>

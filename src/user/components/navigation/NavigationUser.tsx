@@ -7,11 +7,11 @@ function NavigationUser() {
       display={"flex"}
       flexDirection={"row"}
       justifyContent={"space-between"}
-      h={'12vh'}
+      h={'14vh'}
       width={"100vw"}
     >
       <ButtonLink to={"/"} w={"50%"}>
-        <Image boxSize="70px" src={logo} ml={7} mt={5} alt="Logo" />
+        <Image boxSize="70px" src={logo} ml={7} mt={3} alt="Logo" />
       </ButtonLink>
       <Box
         display={"flex"}
