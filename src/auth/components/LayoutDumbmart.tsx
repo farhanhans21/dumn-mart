@@ -1,7 +1,7 @@
-import { Box, Button, Image, Text } from "@chakra-ui/react";
-import logo from "../../assets/Frame@3x.png";
+import { Box, Image, Text } from "@chakra-ui/react";
+import logo from "../../assets/Frame.svg";
 import nama from "../../assets/Group 7.png";
-import { useNavigate } from "react-router-dom";
+
 import { ButtonLink } from "../../ui/Button";
 function LayoutDumbmart() {
   return (
@@ -37,11 +37,29 @@ function LayoutDumbmart() {
         gap={10}
         justifyContent={"space-around"}
       >
-        <ButtonLink bgColor={"#F74D4D"} to={"/"} w={"50%"} display={"flex"} rounded={3} justifyContent={"center"} alignItems={"center"} h={'30px'}>
-        <Text fontWeight='medium'>Login</Text> 
+        <ButtonLink
+          bgColor={"#F74D4D"}
+          to={"/login"}
+          w={"50%"}
+          display={"flex"}
+          rounded={3}
+          justifyContent={"center"}
+          alignItems={"center"}
+          h={"30px"}
+        >
+          <Text fontWeight="medium">Login</Text>
         </ButtonLink>
-        <ButtonLink bgColor={"#F74D4D"} to={"/register"} h={'30px'} display={"flex"} rounded={3} justifyContent={"center"} alignItems={"center"} w={"50%"}>
-          <Text fontWeight='medium'>Register</Text>
+        <ButtonLink
+          bgColor={"#F74D4D"}
+          to={"/register"}
+          h={"30px"}
+          display={"flex"}
+          rounded={3}
+          justifyContent={"center"}
+          alignItems={"center"}
+          w={"50%"}
+        >
+          <Text fontWeight="medium">Register</Text>
         </ButtonLink>
       </Box>
     </Box>

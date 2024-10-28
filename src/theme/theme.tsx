@@ -5,13 +5,26 @@ export const costumeTheme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: 'black', // Dark background
-        color: 'white', // Default text color
+        bg: 'black', 
+        color: 'white',
+        // maxwidth: '100vh',
+        // height: '100vh',
+        // width: '100vh',
+        // maxheight: '100vh',
+        overflowX: "hidden",       
+        overflowY: "auto",         
+        "&::-webkit-scrollbar": { 
+          display: "none"        
+        },
+        "-ms-overflow-style": "none", 
+        "scrollbar-width": "none",
       },
+
     },
     fonts:{
       heading: "Outfit, sans-serif",
       body: "Inter, sans-serif",
     },
+
   },
 })

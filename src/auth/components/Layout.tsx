@@ -1,8 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import React from "react";
-import type { SVGProps } from "react";
-import LayoutDumbmart from "./LayoutDumbmart";
 import { Outlet } from "react-router-dom";
+import LayoutDumbmart from "./LayoutDumbmart";
 
 export function Layout() {
   return (
