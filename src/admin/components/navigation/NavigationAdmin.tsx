@@ -22,7 +22,7 @@ function NavigationAdmin() {
           color={"red"}
           _hover={{ color: "white" }}
           fontWeight={"medium"}
-          to={""}
+          to={"admin"}
           w={"50%"}
           display={"flex"}
           variant="link"
@@ -67,7 +67,7 @@ function NavigationAdmin() {
           color={"red"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
-          to={"/products"}
+          to={"/list-products"}
           w={"50%"}
           display={"flex"}
           variant="link"

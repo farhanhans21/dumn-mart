@@ -35,7 +35,7 @@ return (
           <HStack>
             <Avatar name="Dan Abrahmov" src={hans.img}/>
             <Box display={"flex"} alignItems={'start'} ml={2}>
-              <VStack spacing={2}>
+              <VStack spacing={2} align={'stretch'}>
               <Text fontWeight={"semibold"} color={"white"} >{hans.nama}</Text>
               <Text fontWeight={"light"} color={"white"}>{hans.bio}</Text>
               </VStack>

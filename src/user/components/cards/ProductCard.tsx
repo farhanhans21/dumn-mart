@@ -1,10 +1,15 @@
 import {
   Box,
+  Button,
+  ButtonGroup,
   Card,
   CardBody,
+  Flex,
   Image,
   Text
 } from "@chakra-ui/react";
+import garbage from "../../../assets/garbage.svg"
+import add from "../../../assets/add.svg"
 import { useParams } from "react-router-dom";
 import { ButtonLink } from "../../../ui/Button";
 
@@ -181,11 +186,18 @@ function ProductCard() {
                 fontWeight={"medium"}
                 color={"white"}
                 flexDir={"column"}
+                
               >
                 <Text>{data.name}</Text>
                 <Text>{data.price}</Text>
                 <Text>{data.stock}</Text>
+                <ButtonGroup display={"flex"} flexDir={"row"} justifyContent={'end'}>
+                <Button colorScheme='red'><Image src={garbage}/></Button>
+                <Button colorScheme='green'><Image src={add}/></Button>
+                </ButtonGroup>
+              
               </Box>
+              
             </CardBody>
           </Card>
         

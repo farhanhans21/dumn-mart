@@ -8,6 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { ButtonLink } from "../../../ui/Button";
 
 function ProfileCard() {
   
@@ -26,7 +27,6 @@ function ProfileCard() {
               objectFit={"cover"}
               src="https://images.inc.com/uploaded_files/image/1024x576/getty_481292845_77896.jpg"
             />
-           
               <VStack spacing={3} align={"stretch"}>
                 <Box>
                   <Text fontWeight={"medium"} color={"red"}>

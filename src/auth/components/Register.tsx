@@ -11,7 +11,6 @@ function Register() {
   return (
     <Box
       display={"flex"}
-      // bgColor={"white"}
       flexDirection={"column"}
     >
       <Box w={"25vw"} pt={4} h={"40vh"} bgColor={'#181818'} rounded={'2%'}>

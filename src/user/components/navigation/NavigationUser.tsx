@@ -1,6 +1,7 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import logo from "../../../assets/Frame.svg";
 import { ButtonLink } from "../../../ui/Button";
+import cart from "../../../assets/cart.svg"
 function NavigationUser() {
   return (
     <Box
@@ -17,10 +18,25 @@ function NavigationUser() {
         display={"flex"}
         justifyContent={"space-around"}
         w={"30%"}
+        mr={2}
         alignItems={"center"}
       >
         <ButtonLink
-          color={"red"}
+          color={"white"}
+          fontWeight={"medium"}
+          _hover={{ color: "white" }}
+          to={"/complain"}
+          w={"50%"}
+          display={"flex"}
+          variant="link"
+          justifyContent={"center"}
+          alignItems={"center"}
+          h={"30px"}
+        >
+          <Image src={cart} w={'2vw'}/>
+        </ButtonLink>
+        <ButtonLink
+          color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
           to={"/complain"}
@@ -34,7 +50,7 @@ function NavigationUser() {
           <Text fontWeight="medium">Complain</Text>
         </ButtonLink>
         <ButtonLink
-          color={"red"}
+          color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
           to={"/profile-user"}
@@ -48,7 +64,7 @@ function NavigationUser() {
           <Text fontWeight="medium">Profile</Text>
         </ButtonLink>
         <ButtonLink
-          color={"red"}
+          color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
           to={"/login"}

@@ -1,12 +1,16 @@
 import {
   Box,
+  Button,
+  ButtonGroup,
   Card,
   CardBody,
   Image,
   Text,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
 import logo from "../../../assets/Frame.svg";
+import garbage from "../../../assets/garbage.svg";
+
 function TransactionUser() {
   const trans = [
     {
@@ -48,7 +52,8 @@ function TransactionUser() {
       img: "https://thumbs.dreamstime.com/b/food-photography-epic-cheeseburger-flying-ingredients-splashing-dripping-sauce-dark-background-advertising-313260265.jpg",
       total: 20000,
       status: "pending",
-    },{
+    },
+    {
       id: 1,
       product: "Burger",
       price: "Rp.10.000",
@@ -57,7 +62,8 @@ function TransactionUser() {
       img: "https://thumbs.dreamstime.com/b/food-photography-epic-cheeseburger-flying-ingredients-splashing-dripping-sauce-dark-background-advertising-313260265.jpg",
       total: 20000,
       status: "pending",
-    },{
+    },
+    {
       id: 1,
       product: "Burger",
       price: "Rp.10.000",
@@ -71,7 +77,7 @@ function TransactionUser() {
   return (
     <>
       {trans.map((trans) => (
-        <Card bgColor={"#212121"} rounded={'30px'} mt={'30px'}>
+        <Card bgColor={"#212121"} rounded={"30px"} mt={"30px"}>
           <CardBody display={"flex"} flexDir={"row"}>
             <Image
               src={trans.img}
@@ -100,8 +106,19 @@ function TransactionUser() {
                 {trans.price}
               </Text>
             </Box>
-            <Box display={"flex"} ml={'10vw'} bgColor={""} borderColor={'transparent'}>
-              <Image ml={'5vw'} src={logo} w={'4vw'}   />
+            <Box
+              display={"flex"}
+              marginLeft={"10vw"}
+              borderColor={"transparent"}
+            >
+              <ButtonGroup>
+                <Button w={"3vw"}>
+                  <Image src={logo} />
+                </Button>
+                <Button w={"3vw"} bgColor={"red"}>
+                  <Image src={garbage} w={"2vw"} />
+                </Button>
+              </ButtonGroup>
             </Box>
           </CardBody>
         </Card>

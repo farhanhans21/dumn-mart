@@ -13,6 +13,8 @@ node_modules
 dist
 dist-ssr
 *.local
+tsconfig.json
+src/main.tsx
 
 # Editor directories and files
 .vscode/*

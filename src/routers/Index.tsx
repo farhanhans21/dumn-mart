@@ -13,6 +13,7 @@ import ListCategory from "../admin/components/list/ListCategory";
 import EditProduct from "../admin/components/EditProduct";
 import LayoutComplain from "../complain/layout/LayoutComplain";
 import ListProduct from "../admin/components/list/ListProduct";
+import DashboardLayout from "../admin/components/DashboardLayout";
 
 export function AppRouter() {
   const routers = createBrowserRouter([
@@ -47,17 +48,19 @@ export function AppRouter() {
       ],
     },
     {
-      path:"admin",
       element:<LayoutAdmin/>,
       children:[
         {
-            path:'list-category',
-            index: true,
+          index:true,
+          element: <DashboardLayout/>
+        },
+        {
+            path:"list-category",
             element:<ListCategory/>
 
           },
           {
-            path: "products",
+            path: "list-products",
             element: <ListProduct/>
           },
           {
