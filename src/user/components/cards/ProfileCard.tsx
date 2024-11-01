@@ -14,8 +14,22 @@ function ProfileCard() {
   
   return (
     <>
-      <Box mt={"20px"} ml={"40px"}>
+      <Box mt={"20px"} ml={"40px"} display={"flex"} flexDir={'row'} justifyContent={"space-between"}>
         <Heading color={"red"}>My Profile</Heading>
+        <ButtonLink
+          bgColor={'none'}
+          to={"/edit-profile"}
+          w={"50px"}
+          display={"flex"}
+          rounded={3}
+          _hover={{bgColor:'outline'}}
+          mr={'40px'}
+          justifyContent={"center"}
+          alignItems={"center"}
+          h={"30px"}
+        >
+          <Text fontWeight="bold">Edit</Text>
+        </ButtonLink>
       </Box>
       <Card mt={4} bgColor={"black"}>
         <CardBody display={"flex"} flexDir={"row"} ml={6}>
@@ -59,8 +73,8 @@ function ProfileCard() {
                   <Text color={"white"}>Jalan Sawangan nomor 5a Depok Jawa Barat</Text>
                 </Box>
               </VStack>
-            
           </HStack>
+          
         </CardBody>
       </Card>
     </>

@@ -54,7 +54,7 @@ function TableProduct() {
 
   return (
     <>
-      <TableContainer>
+      <TableContainer >
         <Table variant="simple">
           <Thead>
             <Tr color={"white"}>
@@ -82,6 +82,7 @@ function TableProduct() {
                       display={"flex"}
                       fontWeight={"medium"}
                       rounded={"10px"}
+                      _hover={{ color :"black"}}
                       justifyContent={"center"}
                       alignItems={"center"}
                       to={"/edit-product"}
@@ -91,7 +92,7 @@ function TableProduct() {
                     >
                       Edit
                     </ButtonLink>
-                    <Button colorScheme="red">Hapus</Button>
+                    <Button _hover={{color: "black"}} colorScheme="red">Hapus</Button>
                   </ButtonGroup>
                 </Td>
               </Tr>

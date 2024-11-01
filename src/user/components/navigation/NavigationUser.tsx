@@ -53,7 +53,7 @@ function NavigationUser() {
           color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
-          to={"/profile-user"}
+          to={"/profile"}
           w={"50%"}
           display={"flex"}
           variant="link"

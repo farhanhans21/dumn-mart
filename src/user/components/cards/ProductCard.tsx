@@ -4,13 +4,11 @@ import {
   ButtonGroup,
   Card,
   CardBody,
-  Flex,
   Image,
   Text
 } from "@chakra-ui/react";
-import garbage from "../../../assets/garbage.svg"
-import add from "../../../assets/add.svg"
 import { useParams } from "react-router-dom";
+import add from "../../../assets/add.svg";
 import { ButtonLink } from "../../../ui/Button";
 
 function ProductCard() {
@@ -158,49 +156,47 @@ function ProductCard() {
       stock: "Stock: 500",
       image:
         "https://cdn1-production-images-kly.akamaized.net/KnORI-3eEScB-XJd2t09_3O6SE8=/1200x1200/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2536322/original/059702700_1544846845-shutterstock_743138434.jpg",
-    }
+    },
   ];
 
   const { id } = useParams();
   return (
     <>
       {product.map((data) => (
-         
-         <Card rounded={"5px"} bgColor={"#212121"} w={"500px"} size={"md"}>
-            
-            <CardBody>
+        <Card rounded={"5px"} bgColor={"#212121"} w={"500px"} size={"md"}>
+          <CardBody>
             <ButtonLink to={"/product-detail"}>
-            <Box display={"flex"} justifyContent={"center"}>
-              <Image
-              
-                src={data.image}
-                alt={id}
-                objectFit={"cover"}
-                h={"40vh"}
-                w={"auto"}
-              />
+              <Box display={"flex"} justifyContent={"center"}>
+                <Image
+                  src={data.image}
+                  alt={id}
+                  objectFit={"cover"}
+                  h={"40vh"}
+                  w={"auto"}
+                />
               </Box>
             </ButtonLink>
-              <Box
+            <Box
+              display={"flex"}
+              fontWeight={"medium"}
+              color={"white"}
+              flexDir={"column"}
+            >
+              <Text>{data.name}</Text>
+              <Text>{data.price}</Text>
+              <Text>{data.stock}</Text>
+              <ButtonGroup
                 display={"flex"}
-                fontWeight={"medium"}
-                color={"white"}
-                flexDir={"column"}
-                
+                flexDir={"row"}
+                justifyContent={"end"}
               >
-                <Text>{data.name}</Text>
-                <Text>{data.price}</Text>
-                <Text>{data.stock}</Text>
-                <ButtonGroup display={"flex"} flexDir={"row"} justifyContent={'end'}>
-                <Button colorScheme='red'><Image src={garbage}/></Button>
-                <Button colorScheme='green'><Image src={add}/></Button>
-                </ButtonGroup>
-              
-              </Box>
-              
-            </CardBody>
-          </Card>
-        
+                <Button colorScheme="green">
+                  <Image src={add} />
+                </Button>
+              </ButtonGroup>
+            </Box>
+          </CardBody>
+        </Card>
       ))}
     </>
   );

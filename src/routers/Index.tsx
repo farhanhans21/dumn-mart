@@ -1,19 +1,20 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import DashboardLayout from "../admin/components/DashboardLayout";
+import EditCategory from "../admin/components/EditCategory";
+import EditProduct from "../admin/components/EditProduct";
+import LayoutAdmin from "../admin/components/layout/LayoutAdmin";
+import ListCategory from "../admin/components/list/ListCategory";
+import ListProduct from "../admin/components/list/ListProduct";
 import Layout from "../auth/components/Layout";
 import Login from "../auth/components/Login";
 import Register from "../auth/components/Register";
-import Product from "../user/components/Product";
-import LayoutUser from "../user/components/layouts/LayoutUser";
-import DetailProduk from "../user/components/DetailProduk";
-import Profile from "../user/components/ProfileUser";
-import ProductDetail from "../user/components/ProductDetail";
-import LayoutAdmin from "../admin/components/layout/LayoutAdmin";
-import EditCategory from "../admin/components/EditCategory";
-import ListCategory from "../admin/components/list/ListCategory";
-import EditProduct from "../admin/components/EditProduct";
 import LayoutComplain from "../complain/layout/LayoutComplain";
-import ListProduct from "../admin/components/list/ListProduct";
-import DashboardLayout from "../admin/components/DashboardLayout";
+import DetailProduk from "../user/components/DetailProduk";
+import EditProfile from "../user/components/EditProfile";
+import Product from "../user/components/Product";
+import ProductDetail from "../user/components/ProductDetail";
+import Profile from "../user/components/ProfileUser";
+import LayoutUser from "../user/components/layouts/LayoutUser";
 
 export function AppRouter() {
   const routers = createBrowserRouter([
@@ -34,16 +35,20 @@ export function AppRouter() {
         },
         { path: "product-user", element: <DetailProduk /> },
         {
-          path: "profile-user",
+          path: "profile",
           element: <Profile />,
         },
         {
           path: "complain",
-           element:<LayoutComplain/>,
+          element:<LayoutComplain/>,
         },
         {
           path:"product-detail",
           element:<ProductDetail />
+        },
+        {
+          path:"edit-profile",
+          element:<EditProfile/>
         }
       ],
     },

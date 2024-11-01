@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Iuser, IUserProfile } from "../../complain/entities/authEntities";
-import { loginAsync } from "./async";
+import { loginAsync, registerAsync } from "./async";
 
 export interface userStateDTO {
   name?: string;
@@ -20,7 +20,7 @@ const initialState: userState = {
   loading: false,
 };
 
-const loginSlice = createSlice({
+const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
   reducers: {
@@ -41,8 +41,18 @@ const loginSlice = createSlice({
     builder.addCase(loginAsync.rejected, (state) => {
       state.loading = false;
     });
-  },
-});
 
-export const { LOGOUT } = loginSlice.actions;
-export default loginSlice.reducer
+    builder.addCase(registerAsync.pending, (state) => {
+      state.loading = true;
+    })
+    builder.addCase(registerAsync.fulfilled, (state, action) =>{
+      state.loading = false;
+      state.entities.user = action.payload;
+    })
+    
+}});
+
+
+export const { LOGOUT } = authSlice.actions;
+export default authSlice.reducer;
+

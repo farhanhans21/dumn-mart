@@ -12,7 +12,6 @@ function Product() {
       marginTop={"40px"}
       maxH={"100vh"}
       w={"100vw"}
-      p={1}
       h={"100vh"}
       overflowY={'auto'}
       sx={{

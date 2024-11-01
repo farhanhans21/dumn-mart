@@ -3,7 +3,7 @@ import ProductCard from "../cards/ProductCard";
 
 function ProductList() {
   return (
-    <HStack align={"start"} display={"flex"} flexWrap={"wrap"} spacing={3}>
+    <HStack align={"start"} display={"flex"} flexWrap={"wrap"}  spacing={3}>
       <ProductCard />
     </HStack>
   );

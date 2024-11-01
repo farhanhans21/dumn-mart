@@ -19,8 +19,8 @@ function NavigationAdmin() {
         alignItems={"center"}
       >
         <ButtonLink
-          color={"red"}
-          _hover={{ color: "white" }}
+          color={"white"}
+          _hover={{ color: "red" }}
           fontWeight={"medium"}
           to={"admin"}
           w={"50%"}
@@ -34,8 +34,8 @@ function NavigationAdmin() {
         </ButtonLink>
 
         <ButtonLink
-          color={"red"}
-          _hover={{ color: "white" }}
+          color={"white"}
+          _hover={{ color: "red" }}
           fontWeight={"medium"}
           to={"/complain"}
           w={"50%"}
@@ -49,9 +49,9 @@ function NavigationAdmin() {
         </ButtonLink>
 
         <ButtonLink
-          color={"red"}
+          color={"white"}
           fontWeight={"medium"}
-          _hover={{ color: "white" }}
+          _hover={{ color: "red" }}
           to={"/list-category"}
           w={"50%"}
           display={"flex"}
@@ -64,7 +64,7 @@ function NavigationAdmin() {
         </ButtonLink>
 
         <ButtonLink
-          color={"red"}
+          color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
           to={"/list-products"}
@@ -79,7 +79,7 @@ function NavigationAdmin() {
         </ButtonLink>
 
         <ButtonLink
-          color={"red"}
+          color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
           to={"/login"}

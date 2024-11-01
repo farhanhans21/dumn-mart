@@ -23,6 +23,7 @@ export const loginAsync = createAsyncThunk<
       }
 
       localStorage.setItem("token", response.data.token);
+      
       console.log(response.data.token);
 
       return response.data.token;
@@ -35,3 +36,23 @@ export const loginAsync = createAsyncThunk<
     }
   }
 );
+
+export const registerAsync = createAsyncThunk<undefined, {email:string, password:string, name:string, role: string}> (
+  "auth/register",
+  async(data, thunkAPI) =>{
+    try {
+      const response = await api.post("/auth/register",data)
+
+      if (response.status !== 200) {
+        console.log(response.data.message);
+      }
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return thunkAPI.rejectWithValue(error.message);
+        } else if (error instanceof Error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  }
+)

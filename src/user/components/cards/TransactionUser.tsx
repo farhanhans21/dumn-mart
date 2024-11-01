@@ -77,12 +77,12 @@ function TransactionUser() {
   return (
     <>
       {trans.map((trans) => (
-        <Card bgColor={"#212121"} rounded={"30px"} mt={"30px"}>
-          <CardBody display={"flex"} flexDir={"row"}>
+        <Card bgColor={"#212121"} rounded={"15px"} mt={"30px"} >
+          <CardBody display={"flex"} flexDir={"row"} >
             <Image
               src={trans.img}
               alt="gambar"
-              w={"10vw"}
+              boxSize={'10vw'}
               rounded={"20px"}
               h={"20vh"}
             />
@@ -108,7 +108,7 @@ function TransactionUser() {
             </Box>
             <Box
               display={"flex"}
-              marginLeft={"10vw"}
+              marginLeft={"12vw"}
               borderColor={"transparent"}
             >
               <ButtonGroup>
