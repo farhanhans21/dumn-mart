@@ -5,7 +5,7 @@ import UserComplain from "../components/UserComplain";
 function LayoutComplain() {
   return (
     <>
-      <Box >
+      <Box>
         <Flex flexDirection={"row"}>
           <Box
             w={"30%"}
@@ -21,26 +21,25 @@ function LayoutComplain() {
           >
             <ContactComplain />
           </Box>
-          <Box  w={"70%"}>
-          <Box
-           
-            h={"75vh"}
-            sx={{
-              overflowY: "auto",
-              "&::-webkit-scrollbar": {
-                display: "none",
-              },
-              "-ms-overflow-style": "none", // Internet Explorer and Edge
-              "scrollbar-width": "none", // Firefox
-            }}
-          >
-            <UserComplain />
+          <Box w={"70%"}>
+            <Box
+              h={"75vh"}
+              sx={{
+                overflowY: "auto",
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+                "-ms-overflow-style": "none", // Internet Explorer and Edge
+                "scrollbar-width": "none", // Firefox
+              }}
+            >
+              <UserComplain />
+            </Box>
+            <HStack>
+              <Input type="text" placeholder="Write your complain here..." />
+              <Button>Submit</Button>
+            </HStack>
           </Box>
-        <HStack>
-        <Input type="text" placeholder="Write your complain here..." />
-        <Button>Submit</Button>
-        </HStack>
-      </Box>
         </Flex>
       </Box>
     </>

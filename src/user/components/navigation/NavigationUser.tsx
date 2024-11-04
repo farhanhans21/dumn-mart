@@ -25,7 +25,7 @@ function NavigationUser() {
           color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
-          to={"/complain"}
+          to={"/cart"}
           w={"50%"}
           display={"flex"}
           variant="link"

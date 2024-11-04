@@ -1,4 +1,4 @@
-import { Iuser, IUserProfile } from "../complain/entities/authEntities";
+import { Iuser, IUserProfile } from "../entities/authEntities";
 
 export interface userStateDTO {
   name?: string;
@@ -7,4 +7,3 @@ export interface userStateDTO {
   profile?: IUserProfile;
   token?: string;
 }
-

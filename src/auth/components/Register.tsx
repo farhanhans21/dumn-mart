@@ -22,9 +22,9 @@ function Register() {
   const onSubmit = async (data: RegisterSchema) => {
     await dispatch(registerAsync(data));
     if (user.entities) {
-      console.log("Login successful");
+      console.log("register successful");
     } else {
-      console.log("Login failed");
+      console.log("register failed");
     }
   };
   return (

@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Iuser, IUserProfile } from "../../complain/entities/authEntities";
-import { loginAsync, registerAsync } from "./async";
+import { Iuser, IUserProfile } from "../../entities/authEntities";
+import { checkAsync, loginAsync, registerAsync } from "./async";
 
 export interface userStateDTO {
   name?: string;
   user?: Iuser;
+  role?: string;
   username?: string;
   profile?: IUserProfile;
   token?: string;
@@ -42,17 +43,29 @@ const authSlice = createSlice({
       state.loading = false;
     });
 
+    builder.addCase(checkAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      state.entities = action.payload;
+    });
+    builder.addCase(checkAsync.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(checkAsync.rejected, (state) => {
+      state.loading = false;
+    });
+
     builder.addCase(registerAsync.pending, (state) => {
       state.loading = true;
-    })
-    builder.addCase(registerAsync.fulfilled, (state, action) =>{
+    });
+    builder.addCase(registerAsync.fulfilled, (state, action) => {
       state.loading = false;
       state.entities.user = action.payload;
-    })
-    
-}});
-
+    });
+    builder.addCase(registerAsync.rejected, (state) => {
+      state.loading = false;
+    });
+  },
+});
 
 export const { LOGOUT } = authSlice.actions;
 export default authSlice.reducer;
-

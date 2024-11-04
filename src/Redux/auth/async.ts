@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { api } from "../../libs/api";
 import axios from "axios";
+import { Iuser } from "../../entities/authEntities";
 
 export const loginAsync = createAsyncThunk<
   string,
@@ -17,11 +18,11 @@ export const loginAsync = createAsyncThunk<
       }
 
       const response = await api.post("/auth/login", data);
-
+      
       if (response.status !== 200) {
         console.log(response.data.massage);
-      }
-
+      } 
+      
       localStorage.setItem("token", response.data.token);
       
       console.log(response.data.token);
@@ -36,6 +37,26 @@ export const loginAsync = createAsyncThunk<
     }
   }
 );
+export const checkAsync = createAsyncThunk<{token:string, user:Iuser}, undefined>(
+  "auth/check",
+  async( _,thunkAPI) => {
+    try {
+     const token =  localStorage.getItem("token")
+     if (!token) {
+      console.log('gabisa goblok');
+      
+     }
+
+      const response = await api.get(`/auth/authCheck`, {headers: {Authorization: `Bearer ${token}`}})
+      console.log(response);
+      return response.data
+    } catch (error: any) {
+     console.log(error);
+     return thunkAPI.rejectWithValue((error as Error).message);
+    }
+  }
+
+)
 
 export const registerAsync = createAsyncThunk<undefined, {email:string, password:string, name:string, role: string}> (
   "auth/register",

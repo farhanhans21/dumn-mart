@@ -12,4 +12,5 @@ export interface IUserProfile{
   phone: string;
   image:string;
   gender:string;
+  
 }

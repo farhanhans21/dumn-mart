@@ -52,7 +52,7 @@ function NavigationAdmin() {
           color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "red" }}
-          to={"/list-category"}
+          to={"/admin"}
           w={"50%"}
           display={"flex"}
           variant="link"
