@@ -10,7 +10,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
@@ -20,9 +20,9 @@ import { useAppDispatch, useAppSelector } from "../../../store/store";
 import { categoryCreateAsync } from "../../../Redux/category/async";
 function CreateCategory() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {register, handleSubmit} = useForm<CategorySchema>({
+  const { register, handleSubmit } = useForm<CategorySchema>({
     resolver: zodResolver(CategorySchema),
-  })
+  });
   const dispatch = useAppDispatch();
   const category = useAppSelector((state) => state.category);
   const onSubmit = async (data: CategorySchema) => {
@@ -33,17 +33,16 @@ function CreateCategory() {
       console.log("Failed to create category");
     }
     onClose();
-  }
+  };
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
-  
+
   return (
     <>
       <Button onClick={onOpen} colorScheme="blue">
         Create
       </Button>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
       <Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
@@ -54,22 +53,23 @@ function CreateCategory() {
         <ModalContent bgColor={"#212121"}>
           <ModalHeader>Create Category</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>Name Category</FormLabel>
-              <Input  {...register("name")} placeholder="Name Category" />
-            </FormControl>
-          </ModalBody>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <ModalBody pb={6}>
+              <FormControl>
+                <FormLabel>Name Category</FormLabel>
+                <Input {...register("name")} placeholder="Name Category" />
+              </FormControl>
+            </ModalBody>
 
-          <ModalFooter>
-            <Button type="submit" colorScheme="blue" mr={3}>
-              Save
-            </Button>
-            <Button  onClick={onClose}>Cancel</Button>
-          </ModalFooter>
+            <ModalFooter>
+              <Button type="submit" colorScheme="blue" mr={3}>
+                Save
+              </Button>
+              <Button onClick={onClose}>Cancel</Button>
+            </ModalFooter>
+          </form>
         </ModalContent>
       </Modal>
-        </form>
     </>
   );
 }
