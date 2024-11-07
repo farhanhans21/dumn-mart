@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { categoryCreateAsync, categoryGetAsync, deleteCategoryAsync, editCategoriesAsync } from "./async";
 import { ICategory } from "../../entities/categoryEntities";
 
@@ -52,9 +52,9 @@ const categorySlice = createSlice({
       state.loading = false;
     });
 
-    builder.addCase(deleteCategoryAsync.fulfilled, (state,action: PayloadAction<number>) => {
+    builder.addCase(deleteCategoryAsync.fulfilled, (state,action) => {
       state.loading = true;
-      state.entities = state.entities.filter(category => category.id !== action.payload)
+      state.entities = state.entities.filter(category => category.id!== action.payload)
     })
     builder.addCase(deleteCategoryAsync.pending, (state) => {
       state.loading = true;

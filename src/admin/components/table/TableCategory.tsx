@@ -7,78 +7,48 @@ import {
   Td,
   Th,
   Thead,
-  Tr
+  Tr,
 } from "@chakra-ui/react";
 import { ButtonLink } from "../../../ui/Button";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { categoryGetAsync, deleteCategoryAsync } from "../../../Redux/category/async";
+import {
+  categoryGetAsync,
+  deleteCategoryAsync,
+} from "../../../Redux/category/async";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { IProduct } from "../../../entities/productEntities";
+import { ICategory } from "../../../entities/categoryEntities";
 
 function TableCategory() {
-  
-  const navigate = useNavigate()
-  const dispatch = useAppDispatch()
-  const category = useAppSelector((state) => state.category)  
-  
-  const [number, setNumber] = useState<number>(0)
-  
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const category = useAppSelector((state) => state.category.entities);
 
+  const [number, setNumber] = useState<number>(0);
 
-  const onDelete = async (): Promise<void> => {
-    for (const categoryElement of category.entities) {
-      try {
-        // Dispatch action untuk menghapus kategori
-        await dispatch(deleteCategoryAsync(categoryElement.id)).unwrap();
-        // Tampilkan pesan sukses
-        Swal.fire("Deleted!", "Your category has been deleted.", "success");
-        // Arahkan pengguna ke halaman admin setelah berhasil menghapus
-        navigate('/admin');
-      } catch (error) {
-        Swal.fire("Error!", "Failed to delete category. Please try again.", "error");
-      }
+  const onDelete = async (id: number): Promise<void> => {
+    try {
+      await dispatch(deleteCategoryAsync(id)).unwrap();
+
+      Swal.fire("Deleted!", "Your category has been deleted.", "success");
+
+      navigate("/admin");
+    } catch (error) {
+      Swal.fire(
+        "Error!",
+        "Failed to delete category. Please try again.",
+        "error"
+      );
     }
   };
 
   // Fungsi untuk menampilkan konfirmasi dengan SweetAlert
-  const confirmDelete = (): void => {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "chakra-button chakra-button--solid chakra-button--green",
-        cancelButton: "chakra-button chakra-button--solid chakra-button--red"
-      },
-      buttonsStyling: false
-    });
-
-    swalWithBootstrapButtons.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel!",
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Jika pengguna mengonfirmasi, jalankan onDelete
-        onDelete();
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // Jika pengguna membatalkan, tampilkan pesan batal
-        swalWithBootstrapButtons.fire({
-          title: "Cancelled",
-          text: "Your category is safe :)",
-          icon: "error"
-        });
-      }
-    });
-  }
-
 
   useEffect(() => {
-    
-    dispatch(categoryGetAsync())
-  }, [dispatch])
+    dispatch(categoryGetAsync());
+  }, [dispatch]);
   return (
     <>
       <TableContainer>
@@ -91,8 +61,8 @@ function TableCategory() {
             </Tr>
           </Thead>
           <Tbody>
-            {category.entities.map((data, index) => (
-              <Tr>
+            {category.map((data, index) => (
+              <Tr key={data.id}>
                 <Td>{index + 1}</Td>
                 <Td>{data?.name}</Td>
                 <Td>
@@ -110,7 +80,9 @@ function TableCategory() {
                     >
                       Edit
                     </ButtonLink>
-                    <Button onClick={confirmDelete} colorScheme="red">Hapus</Button>
+                    <Button onClick={()=>onDelete(data.id)} colorScheme="red">
+                      Hapus
+                    </Button>
                   </ButtonGroup>
                 </Td>
               </Tr>

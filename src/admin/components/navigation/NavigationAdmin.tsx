@@ -1,7 +1,16 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { ButtonLink } from "../../../ui/Button";
 import logo from "../../../assets/Frame.svg";
+import { useAppDispatch } from "../../../store/store";
+import { LOGOUT } from "../../../Redux/auth/slice";
+import { useNavigate } from "react-router-dom";
 function NavigationAdmin() {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch();
+  const remove =  async() => {
+    dispatch(LOGOUT())
+    navigate('/login')
+  }
   return (
     <Box
       display={"flex"}
@@ -82,6 +91,7 @@ function NavigationAdmin() {
           color={"white"}
           fontWeight={"medium"}
           _hover={{ color: "white" }}
+          onClick={()=> {remove()}}
           to={"/login"}
           w={"50%"}
           display={"flex"}

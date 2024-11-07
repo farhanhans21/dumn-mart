@@ -76,7 +76,7 @@ export function AppRouter() {
               element: <ListProduct />,
             },
             {
-              path: "edit-product",
+              path: "edit-product/:id",
               element: <EditProduct />,
             },
             {

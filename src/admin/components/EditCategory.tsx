@@ -9,9 +9,8 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
+
 import {
-  deleteCategoryAsync,
   editCategoriesAsync,
 } from "../../Redux/category/async";
 import { CategorySchema } from "../../schemas/category-schema";

@@ -21,28 +21,29 @@ import { categoryGetAsync } from "../../../Redux/category/async";
 import { createProductAsync } from "../../../Redux/product/async";
 import { ProductSchema } from "../../../schemas/product-shema";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { ProductDTO } from "../../../entities/productEntities";
 function ProductCreate() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { register, handleSubmit, setValue } = useForm<ProductSchema>({
+  const { register, handleSubmit } = useForm<ProductSchema>({
     resolver: zodResolver(ProductSchema),
   });
 
   const dispatch = useAppDispatch();
   const product = useAppSelector((state) => state.product);
   const category = useAppSelector((state) => state.category);
-  console.log(category);
 
   const isInitialMount = useRef(true);
 
   const onSubmit = async (data: ProductSchema) => {
+    
     const formData = new FormData();
+
     formData.append("nameProduct", data.nameProduct);
     formData.append("desc", data.desc);
     formData.append("price", data.price.toString());
     formData.append("categoryId", data.categoryId.toString());
     formData.append("stock", data.stock.toString());
+
     if (data.image && data.image.length > 0) {
       formData.append("image", data.image[0]);
     }
@@ -61,7 +62,7 @@ function ProductCreate() {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
-  const [selectedValues, setSelectedValues] = useState<any>("");
+  const [selectedValues,setSelectedValues] = useState<any>("");
 
   useEffect(() => {
     const saveValue = localStorage.getItem("selectedOption");
@@ -80,6 +81,8 @@ function ProductCreate() {
       console.log(res);
     }
   }, [dispatch]);
+
+
   return (
     <>
       <Button onClick={onOpen} colorScheme="blue">
@@ -143,7 +146,7 @@ function ProductCreate() {
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Image</FormLabel>
-                <Input type="file" {...register("image")} border={"none"} />
+                <Input type="file"  {...register("image")} border={"none"} />
               </FormControl>
             </ModalBody>
             <ModalFooter>

@@ -7,7 +7,15 @@ export interface ProductDTO {
   categotyProduct: ICategory;
   image: FileList;
 }
-
+export type updateProductDTO = {
+  id: number;
+  nameProduct: string;
+  desc: string;
+  stock: number;
+  price: number;
+  categoryId: number;
+  image: FileList;
+};
 export interface IProduct {
   id: number;
   nameProduct: string;
@@ -15,8 +23,7 @@ export interface IProduct {
   stock: number;
   price: number;
   categoryId: number;
-  categotyProduct: ICategory;
-  image: IProductimage;
+  image: IProductimage[];
 }
 
 export interface ICategory {
@@ -26,7 +33,5 @@ export interface ICategory {
 }
 
 export interface IProductimage {
-  id: number;
   url: string;
-  productId: number;
 }

@@ -47,7 +47,7 @@ export const categoryGetAsync = createAsyncThunk<ICategory[]>(
 export const editCategoriesAsync = createAsyncThunk<
   ICategory,
   { id: number; name: CategorySchema }
->("category/edit", async ({id, name}, thunkAPI) => {
+>("category/edit", async ({ id, name }, thunkAPI) => {
   try {
     const response = await api.put(`/category/edit-categories/${id}`, name);
     console.log(response);
@@ -65,16 +65,16 @@ export const editCategoriesAsync = createAsyncThunk<
   }
 });
 
-export const deleteCategoryAsync = createAsyncThunk<number, number>(
+export const deleteCategoryAsync = createAsyncThunk<null, number>(
   "/category/delete",
   async (id, thunkAPI) => {
     try {
-      const response = await api.delete(`/category/delete-categories/${id}`)
-    
-    if (response.status !== 200) {
-      console.log(response.data.massage);
-    }
-    return response.data.id
+      const response = await api.delete(`/category/delete-categories/${id}`);
+
+      if (response.status !== 200) {
+        console.log(response.data.massage);
+      }
+      return response.data.id;
     } catch (error) {
       if (axios.isAxiosError(error)) {
         return thunkAPI.rejectWithValue(error.response?.data.massage);
@@ -83,4 +83,4 @@ export const deleteCategoryAsync = createAsyncThunk<number, number>(
       }
     }
   }
-)
+);

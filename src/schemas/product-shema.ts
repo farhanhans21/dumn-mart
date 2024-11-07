@@ -8,4 +8,8 @@ export const ProductSchema = z.object({
   categoryId: z.number(),
   image: z.instanceof(FileList).optional(),
 });
+
+export const UpdateProductSchema =  ProductSchema.omit({categoryId:true})
+
+export type UpdateProductSchema = z.infer<typeof UpdateProductSchema>;
 export type ProductSchema = z.infer<typeof ProductSchema>;
