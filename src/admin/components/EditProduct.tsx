@@ -12,8 +12,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   editProductAsync,
-  getAllProductAsync,
-  convertFile,
+  getAllProductAsync
 } from "../../Redux/product/async";
 import { UpdateProductSchema } from "../../schemas/product-shema";
 import { useAppDispatch, useAppSelector } from "../../store/store";

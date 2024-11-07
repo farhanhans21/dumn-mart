@@ -24,7 +24,9 @@ function NavigationAdmin() {
       <Box
         display={"flex"}
         justifyContent={"space-around"}
-        w={"30%"}
+        
+        w={"50%"}
+        mr={2}
         alignItems={"center"}
       >
         <ButtonLink
@@ -40,6 +42,21 @@ function NavigationAdmin() {
           h={"30px"}
         >
           <Text fontWeight="medium">Dashboard</Text>
+        </ButtonLink>
+
+        <ButtonLink
+          color={"white"}
+          _hover={{ color: "red" }}
+          fontWeight={"medium"}
+          to={"transaction"}
+          w={"50%"}
+          display={"flex"}
+          variant="link"
+          justifyContent={"center"}
+          alignItems={"center"}
+          h={"30px"}
+        >
+          <Text fontWeight="medium">Transaction</Text>
         </ButtonLink>
 
         <ButtonLink

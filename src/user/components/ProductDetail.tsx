@@ -1,27 +1,37 @@
-import { Box, Button, Heading, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Image, Text, VStack } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { getProductByIdAsync } from "../../Redux/product/async";
+import { useEffect } from "react";
 
 function ProductDetail() {
+  const { id } = useParams(); // get product id from route parameter
+  const dispatch = useAppDispatch();
+  const product = useAppSelector((state)=> state.product.entities.find(p=> p.id === +id!))
+  useEffect(() => {
+  dispatch(getProductByIdAsync(+id!)).unwrap(); // fetch product by id when component mounts
+  }, [dispatch]);
+
   return (
     <>
       <Box
         display={"flex"}
-        mt={"5vh"}
-        ml={"17vw"}
-        justifyContent={"space-between"}
-        w={"60vw"}
-        h={"60vh"}
+        key={id}
+        ml={'10vw'}
       >
-        <Box display={"flex"} maxW={"30%"} w={"100%"} bgColor={"blue"}>
+        <Box display={"flex"} maxW={"30%"} w={"auto"} bgColor={"blue"} >
           <Image
-            objectFit={"cover"}
-            src="https://cdn1-production-images-kly.akamaized.net/KnORI-3eEScB-XJd2t09_3O6SE8=/1200x1200/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2536322/original/059702700_1544846845-shutterstock_743138434.jpg"
+            objectFit={"cover"}   
+            src={product?.image && product?.image.length > 0
+              ? product?.image[0].url
+              : ""}
           />
         </Box>
         <Box display={"flex"} ml={3} maxW={"70%"} w={"100%"}>
           <VStack spacing={4} align={"stretch"}>
             <Box>
-              <Heading color={"red"}>Sate</Heading>
-              <Text mt={2}>Stock: 600</Text>
+              <Heading color={"red"}>{product?.nameProduct}</Heading>
+              <Text mt={2}>Stock : {product?.stock}</Text>
             </Box>
             <Box>
               <Text>- wireless mouse</Text>
@@ -32,20 +42,11 @@ function ProductDetail() {
               <Text>- 10000mAh battery life</Text>
             </Box>
             <Text>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy. Various versions
-              have evolved over the years, sometimes by accident, sometimes on
-              purpose (injected humour and the like).
+              {product?.desc}
             </Text>
             <Box display={"flex"} justifyContent={"flex-end"}>
               <Heading  color={"red"}>
-                Rp. 600.000
+               Rp.{product?.price}
               </Heading>
             </Box>
             <Box

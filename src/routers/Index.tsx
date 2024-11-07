@@ -16,6 +16,7 @@ import Product from "../user/components/Product";
 import ProductDetail from "../user/components/ProductDetail";
 import Profile from "../user/components/ProfileUser";
 import ProtectedRoute from "./router";
+import Transaction from "../admin/components/Transaction";
 
 export function AppRouter() {
   const routers = createBrowserRouter([
@@ -46,7 +47,7 @@ export function AppRouter() {
               element: <LayoutComplain />,
             },
             {
-              path: "product-detail",
+              path: "product-detail/:id",
               element: <ProductDetail />,
             },
             {
@@ -82,6 +83,10 @@ export function AppRouter() {
             {
               path: "edit-category/:id",
               element: <EditCategory />,
+            },
+            {
+              path: "transaction",
+              element: <Transaction />,
             },
             {
               path: "complain",

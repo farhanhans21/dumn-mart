@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { api } from "../../libs/api";
 import { IProduct, IProductimage, updateProductDTO } from "../../entities/productEntities";
+import { ProductSchema } from "../../schemas/product-shema";
 
 export const createProductAsync = createAsyncThunk(
   "product/create",
@@ -76,3 +77,24 @@ export const deleteProductAsync = createAsyncThunk<null,number>(
       }
     }
   })
+
+export const getProductByIdAsync = createAsyncThunk<IProduct,number>(
+"getproductByIdAsync",
+async( id: number,thunkAPI) => {
+  try {
+    const response =  await api.get(`/product/get-detail-products/${id}`)
+    if (response.status !== 200) {
+      console.log(response.data.massage);
+
+    }
+    return response.data.getByIdProducts
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return thunkAPI.rejectWithValue(error.response?.data.massage);
+    } else if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+}
+
+)

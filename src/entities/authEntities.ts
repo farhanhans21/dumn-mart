@@ -7,7 +7,8 @@ export interface Iuser{
 }
 
 export interface IUserProfile{
-  fullName:string;
+  fullname:string;
+  email:string;
   address: string;
   phone: string;
   image:string;

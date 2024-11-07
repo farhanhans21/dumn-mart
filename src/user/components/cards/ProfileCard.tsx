@@ -9,8 +9,17 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { ButtonLink } from "../../../ui/Button";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { useEffect } from "react";
+import { getProfileAsync } from "../../../Redux/profile/async";
 
 function ProfileCard() {
+  const dispatch = useAppDispatch();
+  const profile = useAppSelector((state) => state.profile.entities)
+  
+  useEffect(() => {
+    dispatch(getProfileAsync())
+  },[dispatch])
   
   return (
     <>
@@ -39,38 +48,38 @@ function ProfileCard() {
               w={'50vh'}
               rounded={10}
               objectFit={"cover"}
-              src="https://images.inc.com/uploaded_files/image/1024x576/getty_481292845_77896.jpg"
+              src={profile?.image}
             />
               <VStack spacing={3} align={"stretch"}>
                 <Box>
                   <Text fontWeight={"medium"} color={"red"}>
                     Nama
                   </Text>
-                  <Text color={"white"}>Farhan Pratama</Text>
+                  <Text color={"white"}>{profile?.fullname}</Text>
                 </Box>
                 <Box>
                   <Text fontWeight={"medium"} color={"red"}>
                     Email
                   </Text>
-                  <Text color={"white"}>Farhan@gmail.com</Text>
+                  <Text color={"white"}>{profile?.email}</Text>
                 </Box>
                 <Box>
                   <Text fontWeight={"medium"} color={"red"}>
                     Phone
                   </Text>
-                  <Text color={"white"}>098768868</Text>
+                  <Text color={"white"}>{profile?.phone}</Text>
                 </Box>
                 <Box>
                   <Text fontWeight={"medium"} color={"red"}>
                     Gender
                   </Text>
-                  <Text color={"white"}>male</Text>
+                  <Text color={"white"}>{profile?.gender}</Text>
                 </Box>
                 <Box>
                   <Text fontWeight={"medium"} color={"red"}>
                     Address
                   </Text>
-                  <Text color={"white"}>Jalan Sawangan nomor 5a Depok Jawa Barat</Text>
+                  <Text color={"white"}>{profile?.address}</Text>
                 </Box>
               </VStack>
           </HStack>

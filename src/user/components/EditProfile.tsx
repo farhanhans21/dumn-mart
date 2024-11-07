@@ -7,7 +7,6 @@ import {
   FormControl,
   FormLabel,
   Heading,
-  Image,
   Input,
   Select,
   Textarea
@@ -15,18 +14,7 @@ import {
 function EditProfile() {
   return (
     <>
-      <Container maxW={"80%"} display={"flex"} flexDir={"row"}> 
-        <Box w={'30%'}>
-          
-        <Image
-            h={"70vh"}
-            w={"50vh"}
-            rounded={10}
-            objectFit={"cover"}
-            src="https://images.inc.com/uploaded_files/image/1024x576/getty_481292845_77896.jpg"
-          />
-          
-        </Box >
+      <Container maxW={"80%"} display={"flex"} justifyContent={'center'} flexDir={"row"}> 
           <Box w={'50%'} bgColor={'white'}> 
           <Card size={"sm"} align={'stretch'}>
             <CardBody bgColor={"black"} color={"white"}>
@@ -57,6 +45,12 @@ function EditProfile() {
               <FormControl mt={2}>
                 <FormLabel>Description</FormLabel>
                 <Textarea placeholder="Description" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>
+                  Image
+                </FormLabel>
+                <Input type="file" border={'none'} />
               </FormControl>
               <Box display={"flex"} justifyContent={"end"}>
                 <Button type="submit" mt={2} colorScheme="red">

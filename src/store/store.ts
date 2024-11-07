@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import AuthReduscer from "../Redux/auth/slice"
 import categoryReducer from "../Redux/category/slice"
 import productReducer from "../Redux/product/slice"
+import product2Reducer from "../Redux/product/sliceProduct"
+import profileReducer from "../Redux/profile/slice"
 export  const store = configureStore({
   reducer:{
     auth: AuthReduscer,
     category: categoryReducer,
-    product: productReducer
+    product: productReducer,
+    product2: product2Reducer,
+    profile: profileReducer,
   }
 })
 

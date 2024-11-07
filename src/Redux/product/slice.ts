@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "../../entities/productEntities";
-import { createProductAsync, deleteProductAsync, editProductAsync, getAllProductAsync } from "./async";
+import { createProductAsync, deleteProductAsync, editProductAsync, getAllProductAsync, getProductByIdAsync } from "./async";
 
 interface productState {
   entities: IProduct[];
@@ -63,6 +63,8 @@ const productSlice = createSlice({
       builder.addCase(deleteProductAsync.rejected, (state) => {
         state.loading = false;
       });
+
+      
   },
 });
 export default productSlice.reducer;
