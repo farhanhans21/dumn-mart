@@ -15,3 +15,13 @@ export interface IUserProfile{
   gender:string;
   
 }
+export interface IuserUpdateProfile{
+  firstName:string;
+  lastName:string;
+  email:string;
+  address: string;
+  phone: string;
+  image:string;
+  gender:string;
+  
+}

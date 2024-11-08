@@ -6,13 +6,13 @@ import {
   Input,
   VStack,
 } from "@chakra-ui/react";
-import { useAppDispatch, useAppSelector } from "../../store/store";
-import { useForm } from "react-hook-form";
-import { loginSchema, LoginSchema } from "../../schemas/auth-shema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { checkAsync, loginAsync } from "../../Redux/auth/async";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { checkAsync, loginAsync } from "../../Redux/auth/async";
+import { loginSchema, LoginSchema } from "../../schemas/auth-shema";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 
 function Login() {
   const {
